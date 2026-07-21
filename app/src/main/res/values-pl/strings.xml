@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tetherloom: Orbit Run</string>
+    <string name="studio_name">FloppyTap</string>
+    <string name="studio_tagline">gry niezależne</string>
+
+    <string name="menu_play">Orbit Run</string>
+    <string name="menu_daily">Wzór Dnia</string>
+    <string name="menu_practice">Trening</string>
+    <string name="menu_progress">Postępy</string>
+    <string name="menu_how_to_play">Jak Grać</string>
+    <string name="menu_settings">Ustawienia</string>
+    <string name="menu_credits">Twórcy</string>
+    <string name="menu_high_score_label">Najlepszy wynik</string>
+    <string name="menu_coming_soon">Ten tryb pojawi się w przyszłej aktualizacji.</string>
+
+    <string name="hud_score_label">Wynik</string>
+    <string name="hud_combo_label">Kombo</string>
+    <string name="hud_pause">Pauza</string>
+
+    <string name="pause_title">Pauza</string>
+    <string name="pause_resume">Wznów</string>
+    <string name="pause_restart">Zacznij ponownie</string>
+    <string name="pause_settings">Ustawienia</string>
+    <string name="pause_menu">Menu główne</string>
+
+    <string name="gameover_title">Koniec przebiegu</string>
+    <string name="gameover_score_label">Wynik</string>
+    <string name="gameover_best_label">Najlepszy</string>
+    <string name="gameover_retry">Zagraj ponownie</string>
+    <string name="gameover_menu">Menu główne</string>
+    <string name="gameover_new_best">Nowy najlepszy wynik!</string>
+
+    <string name="settings_title">Ustawienia</string>
+    <string name="settings_language">Język</string>
+    <string name="settings_music">Muzyka</string>
+    <string name="settings_sfx">Efekty dźwiękowe</string>
+    <string name="settings_haptics">Wibracje</string>
+    <string name="settings_screen_shake">Wstrząs ekranu</string>
+    <string name="settings_reduced_effects">Ograniczone efekty</string>
+    <string name="settings_back">Powrót</string>
+    <string name="settings_lang_en">English</string>
+    <string name="settings_lang_pl">Polski</string>
+
+    <string name="htp_title">Jak Grać</string>
+    <string name="htp_body_1">Twój Lumen automatycznie okrąża podłączony węzeł kotwiczący.</string>
+    <string name="htp_body_2">Stuknij ekran w odpowiednim momencie, aby odłączyć się i wystrzelić stycznie w kierunku kolejnego węzła.</string>
+    <string name="htp_body_3">Podleć wystarczająco blisko dostępnego węzła, aby go przechwycić i kontynuować wspinaczkę.</string>
+    <string name="htp_body_4">Unikaj spadania poza dolną granicę ekranu. Łącz płynne przeloty, aby zwiększać kombo.</string>
+    <string name="htp_back">Powrót</string>
+
+    <string name="credits_title">Twórcy</string>
+    <string name="credits_studio">Stworzone przez FloppyTap</string>
+    <string name="credits_body">Oryginalny koncept, projekt i implementacja gry: FloppyTap. Cała grafika generowana jest proceduralnie.</string>
+    <string name="credits_back">Powrót</string>
+
+    <string name="progress_title">Postępy</string>
+    <string name="progress_high_score">Najlepszy wynik</string>
+    <string name="progress_best_combo">Najlepsze kombo</string>
+    <string name="progress_back">Powrót</string>
+
+    <string name="splash_loading">Wczytywanie…</string>
+
+    <string name="reset_confirm_title">Resetowanie postępów</string>
+    <string name="reset_confirm_message">Ta operacja trwale usunie zapisane postępy. Kontynuować?</string>
+    <string name="reset_confirm_yes">Resetuj</string>
+    <string name="reset_confirm_no">Anuluj</string>
+</resources>

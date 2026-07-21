@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_deep">#10131F</color>
+    <color name="background_mist">#1B2440</color>
+    <color name="standard_cyan">#72E6E1</color>
+    <color name="prism_violet">#A98CFF</color>
+    <color name="energy_gold">#FFD36E</color>
+    <color name="danger_coral">#FF6E73</color>
+    <color name="text_primary">#F6F3EB</color>
+    <color name="text_secondary">#B9C1D2</color>
+    <color name="panel_surface">#202942</color>
+    <color name="panel_surface_pressed">#2A365A</color>
+    <color name="transparent">#00000000</color>
+</resources>

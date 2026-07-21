@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_deep"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/menu_padding">
+
+    <ImageView
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:src="@drawable/floppytap_logo"
+        android:contentDescription="@string/studio_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/credits_studio"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/text_title"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/credits_body"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/text_body" />
+
+    <Button
+        android:id="@+id/btnCreditsBack"
+        style="@style/MenuButtonPrimary"
+        android:layout_marginTop="32dp"
+        android:text="@string/credits_back" />
+
+</LinearLayout>

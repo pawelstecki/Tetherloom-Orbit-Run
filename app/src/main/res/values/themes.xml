@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Tetherloom" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/background_deep</item>
+        <item name="colorPrimary">@color/standard_cyan</item>
+        <item name="colorPrimaryDark">@color/background_deep</item>
+        <item name="colorAccent">@color/energy_gold</item>
+        <item name="android:statusBarColor">@color/background_deep</item>
+        <item name="android:navigationBarColor">@color/background_deep</item>
+    </style>
+
+    <style name="Theme.Tetherloom.Splash" parent="Theme.Tetherloom">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+</resources>

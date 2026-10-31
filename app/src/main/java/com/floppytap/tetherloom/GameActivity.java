@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.floppytap.tetherloom.data.PreferencesManager;
 import com.floppytap.tetherloom.game.GameView;
 import com.floppytap.tetherloom.ui.SettingsActivity;
 import com.floppytap.tetherloom.util.LocaleHelper;
+import com.floppytap.tetherloom.util.SystemBarsHelper;
 
 /**
  * Hosts the SurfaceView-based gameplay, HUD, pause overlay, and game-over overlay.
@@ -45,6 +47,7 @@ public class GameActivity extends AppCompatActivity {
         LocaleHelper.applyLanguage(this, preferencesManager.getLanguage());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        SystemBarsHelper.applySystemBarInsets(this);
 
         gameView = findViewById(R.id.gameView);
         textScore = findViewById(R.id.textScore);
@@ -76,6 +79,8 @@ public class GameActivity extends AppCompatActivity {
             restartRun();
         });
         btnGameOverMenu.setOnClickListener(v -> goToMainMenu());
+
+        registerBackHandler();
     }
 
     private void updateHud() {
@@ -127,8 +132,20 @@ public class GameActivity extends AppCompatActivity {
         finish();
     }
 
-    @Override
-    public void onBackPressed() {
+    /**
+     * Apps targeting Android 16 use predictive back, where onBackPressed() is no
+     * longer called. Back is routed through the OnBackPressedDispatcher instead.
+     */
+    private void registerBackHandler() {
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                handleBack();
+            }
+        });
+    }
+
+    private void handleBack() {
         boolean gameOverVisible = layoutGameOverOverlay.getVisibility() == LinearLayout.VISIBLE;
         if (gameOverVisible) {
             goToMainMenu();

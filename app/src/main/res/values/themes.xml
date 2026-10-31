@@ -8,6 +8,9 @@
         <item name="colorAccent">@color/energy_gold</item>
         <item name="android:statusBarColor">@color/background_deep</item>
         <item name="android:navigationBarColor">@color/background_deep</item>
+        <!-- The UI is always dark, so system bar icons must stay light in both day and night mode. -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
     </style>
 
     <style name="Theme.Tetherloom.Splash" parent="Theme.Tetherloom">

@@ -20,10 +20,17 @@ Daily Pattern and Practice modes are visible in the main menu but show a
 "coming soon" message — their full systems (seeded generation, hazard-free tuning)
 are scheduled for Phase 2, as specified.
 
+## Testing and Release (Polish)
+
+- How to test the game: [`docs/TESTOWANIE.md`](docs/TESTOWANIE.md)
+- How to publish on Google Play: [`docs/WYDANIE.md`](docs/WYDANIE.md)
+
+Build requirements: JDK 17+, Android SDK 36. Target SDK is 36 (Google Play requirement).
+
 ## Build and Run Instructions
 
-1. Open Android Studio (Giraffe or newer recommended).
-2. Choose "Open" and select the `TetherloomOrbitRun` project root folder
+1. Open a current stable Android Studio.
+2. Choose "Open" and select the project root folder
    (the folder containing `settings.gradle`).
 3. Wait for Gradle sync to finish. No manual dependency changes are required;
    all dependencies are already declared in `app/build.gradle`.

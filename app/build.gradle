@@ -2,36 +2,86 @@ plugins {
     id 'com.android.application'
 }
 
+// Release signing credentials are never committed. They are read, in order, from:
+//   1. keystore.properties in the project root (local builds, git-ignored), or
+//   2. environment variables (CI): TETHERLOOM_KEYSTORE_FILE, TETHERLOOM_KEYSTORE_PASSWORD,
+//      TETHERLOOM_KEY_ALIAS, TETHERLOOM_KEY_PASSWORD.
+// If neither is present, release builds are produced unsigned.
+def keystoreProps = new Properties()
+def keystorePropsFile = rootProject.file('keystore.properties')
+if (keystorePropsFile.exists()) {
+    keystorePropsFile.withInputStream { keystoreProps.load(it) }
+}
+def signingValue = { String propKey, String envKey ->
+    keystoreProps.getProperty(propKey) ?: System.getenv(envKey)
+}
+def releaseStoreFile = signingValue('storeFile', 'TETHERLOOM_KEYSTORE_FILE')
+def hasReleaseSigning = releaseStoreFile != null && rootProject.file(releaseStoreFile).exists()
+
 android {
     namespace 'com.floppytap.tetherloom'
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.floppytap.tetherloom"
         minSdk 24
-        targetSdk 34
+        // Google Play requires API 36 for new apps and updates since 31 Aug 2026.
+        targetSdk 36
+        // Increase versionCode by 1 for every upload to Google Play.
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
+    signingConfigs {
         release {
-            minifyEnabled false
+            if (hasReleaseSigning) {
+                storeFile rootProject.file(releaseStoreFile)
+                storePassword signingValue('storePassword', 'TETHERLOOM_KEYSTORE_PASSWORD')
+                keyAlias signingValue('keyAlias', 'TETHERLOOM_KEY_ALIAS')
+                keyPassword signingValue('keyPassword', 'TETHERLOOM_KEY_PASSWORD')
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (hasReleaseSigning) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    // Language is switched inside the app (Settings), so every install needs all
+    // translations. Without this, Play would only deliver the device's language.
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
+    lint {
+        abortOnError true
+        checkReleaseBuilds true
     }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.12.0'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
 }

@@ -13,6 +13,7 @@ import com.floppytap.tetherloom.ui.HowToPlayActivity;
 import com.floppytap.tetherloom.ui.ProgressActivity;
 import com.floppytap.tetherloom.ui.SettingsActivity;
 import com.floppytap.tetherloom.util.LocaleHelper;
+import com.floppytap.tetherloom.util.SystemBarsHelper;
 
 /**
  * Main menu screen. Provides navigation to every Phase 1 destination.
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         LocaleHelper.applyLanguage(this, preferencesManager.getLanguage());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SystemBarsHelper.applySystemBarInsets(this);
 
         TextView textHighScoreValue = findViewById(R.id.textHighScoreValue);
         textHighScoreValue.setText(String.valueOf(preferencesManager.getHighScore()));

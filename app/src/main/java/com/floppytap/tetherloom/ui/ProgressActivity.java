@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.floppytap.tetherloom.R;
 import com.floppytap.tetherloom.data.PreferencesManager;
 import com.floppytap.tetherloom.util.LocaleHelper;
+import com.floppytap.tetherloom.util.SystemBarsHelper;
 
 /**
  * Displays locally persisted progress: high score and best combo.
@@ -21,6 +22,7 @@ public class ProgressActivity extends AppCompatActivity {
         LocaleHelper.applyLanguage(this, preferencesManager.getLanguage());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
+        SystemBarsHelper.applySystemBarInsets(this);
 
         TextView textProgressHighScore = findViewById(R.id.textProgressHighScore);
         TextView textProgressBestCombo = findViewById(R.id.textProgressBestCombo);

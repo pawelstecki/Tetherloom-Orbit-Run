@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.floppytap.tetherloom.R;
 import com.floppytap.tetherloom.data.PreferencesManager;
 import com.floppytap.tetherloom.util.LocaleHelper;
+import com.floppytap.tetherloom.util.SystemBarsHelper;
 
 /**
  * Settings screen with working toggles for audio, haptics, screen shake, reduced
@@ -25,6 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
         LocaleHelper.applyLanguage(this, preferencesManager.getLanguage());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        SystemBarsHelper.applySystemBarInsets(this);
 
         RadioGroup radioGroupLanguage = findViewById(R.id.radioGroupLanguage);
         RadioButton radioEn = findViewById(R.id.radioEn);

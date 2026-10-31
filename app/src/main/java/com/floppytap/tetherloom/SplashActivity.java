@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.floppytap.tetherloom.data.PreferencesManager;
 import com.floppytap.tetherloom.util.LocaleHelper;
+import com.floppytap.tetherloom.util.SystemBarsHelper;
 
 /**
  * Brief FloppyTap branded splash screen. Applies the persisted language before
@@ -23,6 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         LocaleHelper.applyLanguage(this, preferencesManager.getLanguage());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        SystemBarsHelper.applySystemBarInsets(this);
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             Intent intent = new Intent(SplashActivity.this, MainActivity.class);
